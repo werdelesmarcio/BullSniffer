@@ -17,25 +17,50 @@ OBS.: Para usar como executável, lembrar de dar permissão de execução
 Para executar a aplicação deve passar o argumento com o host do alvo que terá
 o fluxo de dados que entra e que sai dele enviados para o atacante.
 
-**./bullsniffer [target]**
+**sudo ./bullsniffer**
 
-```  _________                               
-    / ======= \                              
-   /___________\                             
-  | ___________ |                            
-  | | -       | |                            
-  | |         | |                            
-  | |_________| |__________________________  
-  |_=___________|       BULLSNIFFER        ) 
-  / ::::::::::: \       VERSION 1.0       /  
- / ::::::::::::: \      BY: GHOST     =D-'   
-(_________________)                          
+```  ___________                               
+    / ========= \                              
+   /_____________\                             
+  | _____________ |                            
+  | | -         | |                            
+  | |           | |                            
+  | |___________| |__________________________  
+  |_=_____________|       BULLSNIFFER        ) 
+  / ::::::::::::: \       VERSION 1.0       /  
+ / ::::::::::::::: \      BY: GHOST     =D-'   
+(___________________)                          
 
-Digite o alvo: 
+Destination MAC: 00:1a:dd:ba:3d:a1
+Source MAC: b4:74:9f:86:8e:7e
+Protocol: 8
+Version: 4 IP Header Length: 5 TTL: 64 Protocol: 6 Source Address: 192.168.1.114 Destination Adress: 172.217.172.196
+Source Port: 38860 Dest. Port: 443 Sequence Number: 419090580 Acknowledgement: 1231236271 TCP Header Length: 8
+Data: 
 
- [!]ERROR: Missing input arguments.
- [!]Target not set.
- [!]Exiting application.
+Destination MAC: b4:74:9f:86:8e:7e
+Source MAC: 00:1a:dd:ba:3d:a1
+Protocol: 8
+Version: 4 IP Header Length: 5 TTL: 118 Protocol: 6 Source Address: 172.217.172.196 Destination Adress: 192.168.1.114
+Source Port: 443 Dest. Port: 38860 Sequence Number: 1231236271 Acknowledgement: 419090580 TCP Header Length: 8
+Data: ߋ��D`���0X���
+�
+
+Destination MAC: 00:1a:dd:ba:3d:a1
+Source MAC: b4:74:9f:86:8e:7e
+Protocol: 8
+Version: 4 IP Header Length: 5 TTL: 64 Protocol: 6 Source Address: 192.168.1.114 Destination Adress: 172.217.172.196
+Source Port: 38860 Dest. Port: 443 Sequence Number: 419090580 Acknowledgement: 1231237689 TCP Header Length: 8
+Data: 
+
+Destination MAC: b4:74:9f:86:8e:7e
+Source MAC: 00:1a:dd:ba:3d:a1
+Protocol: 8
+Version: 4 IP Header Length: 5 TTL: 118 Protocol: 6 Source Address: 172.217.172.196 Destination Adress: 192.168.1.114
+Source Port: 443 Dest. Port: 38860 Sequence Number: 1231237689 Acknowledgement: 419090580 TCP Header Length: 8
+Data: ���.58��\��F$��`��8ń.I�?�g4ӣ�f6R.|u,���q�����\��C�4>�WԷ"�@�II/�#Z`Y�N�E�k�ӗ��)]�&Y��{�5��9
+
+...
 
 ```
 
