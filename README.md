@@ -32,34 +32,42 @@ o fluxo de dados que entra e que sai dele enviados para o atacante.
  / ::::::::::::::: \      BY: GHOST     =D-'   
 (___________________)                          
 
+------------------------------
 Destination MAC: 00:1a:dd:ba:3d:a1
 Source MAC: b4:74:9f:86:8e:7e
 Protocol: 8
-Version: 4 IP Header Length: 5 TTL: 64 Protocol: 6 Source Address: 192.168.1.114 Destination Adress: 172.217.172.196
-Source Port: 38860 Dest. Port: 443 Sequence Number: 419090580 Acknowledgement: 1231236271 TCP Header Length: 8
-Data: 
+Version: 4
+IP Header Length: 5 TTL: 64
+Protocol: 6
+Source Address: 192.168.1.114
+Destination Adress: 149.154.175.205
+Source Port: 49828 Dest. Port: 443
+Sequence Number: 168534950
+Acknowledgement: 2729051853
+TCP Header Length: 8
+Data: 53�*�����e�ÚZ)����<i�x�T���鳇`�c�X�	�ײ���K���Ky/�=�H�����dޢ�ʔo�F6����������mLeZ��P�$��B��Wε�^[L���o�h��:9
+                                                                                                                     Jt�֨��=┦:��f�'��o ,���:<�\(j��Yǭ�j?��ѳk`_�>��)�E�z�*� |ʽM�V"U\� Hy7���o����������i7����B8�����PW��"�euX`@���
+���HB�$(�rE�h��т3ضwiq�.AI&��n�.aR׮��/�ս��fTݒ<�
+                                   ��6��ێ�e+d�@|Z�/u�#{wL�����ZUG�Di�r/QS~]=�/�lk�;��	�Y��&4ҳ��j�4Xt	6�4�Ck��{��(_��=1IUp�_x�R�;@+8�z"�Zg�%��#f9�m�
+I
 
+------------------------------
+------------------------------
 Destination MAC: b4:74:9f:86:8e:7e
 Source MAC: 00:1a:dd:ba:3d:a1
 Protocol: 8
-Version: 4 IP Header Length: 5 TTL: 118 Protocol: 6 Source Address: 172.217.172.196 Destination Adress: 192.168.1.114
-Source Port: 443 Dest. Port: 38860 Sequence Number: 1231236271 Acknowledgement: 419090580 TCP Header Length: 8
-Data: ߋ��D`���0X���
-�
-
-Destination MAC: 00:1a:dd:ba:3d:a1
-Source MAC: b4:74:9f:86:8e:7e
-Protocol: 8
-Version: 4 IP Header Length: 5 TTL: 64 Protocol: 6 Source Address: 192.168.1.114 Destination Adress: 172.217.172.196
-Source Port: 38860 Dest. Port: 443 Sequence Number: 419090580 Acknowledgement: 1231237689 TCP Header Length: 8
+Version: 4
+IP Header Length: 5 TTL: 54
+Protocol: 6
+Source Address: 149.154.175.205
+Destination Adress: 192.168.1.114
+Source Port: 443 Dest. Port: 49828
+Sequence Number: 2729051853
+Acknowledgement: 168535520
+TCP Header Length: 8
 Data: 
 
-Destination MAC: b4:74:9f:86:8e:7e
-Source MAC: 00:1a:dd:ba:3d:a1
-Protocol: 8
-Version: 4 IP Header Length: 5 TTL: 118 Protocol: 6 Source Address: 172.217.172.196 Destination Adress: 192.168.1.114
-Source Port: 443 Dest. Port: 38860 Sequence Number: 1231237689 Acknowledgement: 419090580 TCP Header Length: 8
-Data: ���.58��\��F$��`��8ń.I�?�g4ӣ�f6R.|u,���q�����\��C�4>�WԷ"�@�II/�#Z`Y�N�E�k�ӗ��)]�&Y��{�5��9
+------------------------------
 
 ...
 
