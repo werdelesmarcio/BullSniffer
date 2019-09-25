@@ -12,6 +12,7 @@ da rede onde é executado.
 
 OBS.: Para usar como executável, lembrar de dar permissão de execução
 **sudo chmod +x bullsniffer.py**
+Só lembrando de que para executar a aplicação você deve ser **root**
 
 ## Execução 
 Para executar a aplicação deve passar o argumento com o host do alvo que terá
