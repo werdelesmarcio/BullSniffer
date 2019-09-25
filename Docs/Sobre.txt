@@ -1,0 +1,18 @@
+Repositório para a aplicação BullSniffer.
+
+BullSniffer é uma ferramenta em fase de desnenvolvimento, voltada para 
+estudo de redes e é direcionada para sistemas GNU/Linux. Faz uma escuta 
+em Promiscuous Mode e captura info da rede onde é executado.
+
+OBS.: Para usar como executável, lembrar de dar permissão de execução 
+sudo chmod +x bullsniffer.py Só lembrando de que para executar a aplicação 
+você deve ser root
+
+Execução
+
+Para executar a aplicação deve passar o argumento com o host do alvo que
+terá o fluxo de dados que entra e que sai dele enviados para o atacante.
+
+sudo ./bullsniffer
+
+O código-fonte está sob Licença GLP e é livre para aceita contribuição.
