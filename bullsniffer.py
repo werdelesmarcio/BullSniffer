@@ -11,20 +11,20 @@ from datetime import datetime
 
 from banner import *
 
-# Limpa a tela ao executar a Aplicação
+# Limpa a tela ao executar a aplicacao
 subprocess.call('clear', shell=True)
 
-banner() #Chama o Banner da Aplicação
+banner()
 
 # Convertendo uma string de 6 caracteres de endereco ethernet
-# em uma sequencia hexadecimal separada por dois pontos (Padrão do Endereço MAC
+# em uma sequencia hexadecimal separada por traco
 def eth_addr(a):
     b = "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x" % (
         ord(a[0]), ord(a[1]), ord(a[2]), ord(a[3]), ord(a[4]), ord(a[5]))
     return b
 
 # Criando um AF_PACKET do tipo raw_socket
-# Definindo ETH_P_ALL   0x0003  /*todos os pacotes.*/
+# define ETH_P_ALL   0x0003  /*todos os pacotes*/
 try:
     s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0003))
 except socket.error as msg:
@@ -39,17 +39,18 @@ while True:
     # String dos pacotes com tuplas
     packet = packet[0]
 
-    # Analisando o cabecalho Ethernet
+    # Analisando o cabecalho ethernet
     eth_length = 14
 
     eth_header = packet[:eth_length]
     eth = unpack('!6s6sH', eth_header)
     eth_protocol = socket.ntohs(eth[2])
+    print ('-' * 30)
     print('Destination MAC: ' + eth_addr(packet[0:6]) +
           '\nSource MAC: ' + eth_addr(packet[6:12]) +
           '\nProtocol: ' + str(eth_protocol))
 
-    # Analisar os Pacotes IP com o protocolo = 8
+# Analisar os Pacotes IP com o protocolo = 8
     if eth_protocol == 8:
         # Analisar o cabecalho IP
         # Capiturando os primeiros 20 caracteres do cabecalho IP
@@ -70,18 +71,17 @@ while True:
         d_addr = socket.inet_ntoa(iph[9])
 
         print('Version: ' + str(version) +
-              ' IP Header Length: ' + str(ihl) +
-              ' TTL: ' + str(ttl) +
-              ' Protocol: ' + str(protocol) +
-              ' Source Address: ' + str(s_addr) +
-              ' Destination Adress: ' + str(d_addr))
+              '\nIP Header Length: ' + str(ihl) + ' TTL: ' + str(ttl) +
+              '\nProtocol: ' + str(protocol) +
+              '\nSource Address: ' + str(s_addr) +
+              '\nDestination Adress: ' + str(d_addr))
 
         # Protocolo TCP
         if protocol == 6:
             t = iph_length + eth_length
             tcp_header = packet[t:t+20]
 
-            # Agora desenpacota os dados
+            # Agora desenpacota
             tcph = unpack('!HHLLBBHHH', tcp_header)
 
             source_port = tcph[0]
@@ -91,11 +91,10 @@ while True:
             doff_reserved = tcph[4]
             tcph_length = doff_reserved >> 4
 
-            print('Source Port: ' + str(source_port) +
-                  ' Dest. Port: ' + str(dest_port) +
-                  ' Sequence Number: ' + str(sequence) +
-                  ' Acknowledgement: ' + str(acknowledgement) +
-                  ' TCP Header Length: ' + str(tcph_length))
+            print('Source Port: ' + str(source_port) + ' Dest. Port: ' + str(dest_port) +
+                  '\nSequence Number: ' + str(sequence) +
+                  '\nAcknowledgement: ' + str(acknowledgement) +
+                  '\nTCP Header Length: ' + str(tcph_length))
 
             h_size = eth_length + iph_length + tcph_length * 4
             data_size = len(packet) - h_size
@@ -111,15 +110,13 @@ while True:
             icmp_length = 4
             icmp_header = packet[u:u+4]
 
-            # Agora desenpacota os dados
+            # Agora desenpacotar
             icmph = unpack('!BBH', icmp_header)
             icmp_type = icmph[0]
             code = icmph[1]
             checksum = icmph[2]
 
-            print('Type: ' + str(icmp_type) +
-                  ' Code: ' + str(code) +
-                  ' Checksum: ' + str(checksum))
+            print('Type: ' + str(icmp_type) + ' Code: ' + str(code) + ' Checksum: ' + str(checksum))
 
             h_size = eth_length + iph_length + icmp_length
             data_size = len(packet) - h_size
@@ -135,7 +132,7 @@ while True:
             udph_length = 8
             udp_header = packet[u:u+8]
 
-            # Agora desenpacota os dados
+            # Agora desenpacotar
             udph = unpack('!HHHH', udp_header)
 
             source_port = udph[0]
@@ -143,10 +140,8 @@ while True:
             length = udph[2]
             checksum = udph[3]
 
-            print('Source Port: ' + str(source_port) +
-                  ' Dest. Port: ' + str(dest_port) +
-                  ' Length: ' + str(length) +
-                  ' Checksum: ' + str(checksum))
+            print('Source Port: ' + str(source_port) + ' Dest. Port: ' + str(dest_port) +
+                  '\nLength: ' + str(length) + ' Checksum: ' + str(checksum))
 
             h_size = eth_length + iph_length + udph_length
             data_size = len(packet) - h_size
@@ -155,8 +150,10 @@ while True:
             data = packet[h_size:]
 
             print('Data: ' + data)
+            
 
     # Algum outro pacote IP com IGMP
     else:
         print('Protocol other than TCP/UDP/ICMP')
     print
+    print('-' * 30)
