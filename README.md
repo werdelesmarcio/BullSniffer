@@ -1,4 +1,4 @@
-# BullSniffer <img src="https://github.com/werdelesmarcio/PyTCPScan/blob/master/icon.png" width=25> 
+# BullSniffer <img src="https://github.com/werdelesmarcio/BullSniffer/blob/master/bullsniffericon.png" width=25> 
 
 <img src="http://img.shields.io/liberapay/receives/scorpion.svg?logo=liberapay">  <img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/werdelesmarcio/BullSniffer">  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=werdelesmarcio_BullSniffer&metric=alert_status)](https://sonarcloud.io/dashboard?id=werdelesmarcio_BullSniffer)  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/werdelesmarcio/BullSniffer">  <img alt="GitHub" src="https://img.shields.io/github/license/werdelesmarcio/BullSniffer">  <img alt="Twitter URL" src="https://img.shields.io/twitter/url/https/twitter.com/ScorpionInc?style=social">
 
