@@ -1,60 +1,162 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 # -*- coding: utf-8 -*-
 
 import socket
 import sys
 import os
+from struct import *
 import subprocess
 from datetime import datetime
 
-#Limpa a tela ao executar a aplicacao
+from banner import *
+
+# Limpa a tela ao executar a Aplicação
 subprocess.call('clear', shell=True)
 
-print("     _________                               ")
-print("    / ======= \                              ")
-print("   /___________\                             ")
-print("  | ___________ |                            ")
-print("  | | -       | |                            ")
-print("  | |         | |                            ")
-print("  | |_________| |__________________________  ")
-print("  |_=___________|       BULLSNIFFER        ) ")
-print("  / ::::::::::: \       VERSION 1.0       /  ")
-print(" / ::::::::::::: \      BY: GHOST     =D-'   ")
-print("(_________________)                          ")
-print
+banner() #Chama o Banner da Aplicação
 
-	
-host = raw_input("Digite o alvo: ")
+# Convertendo uma string de 6 caracteres de endereco ethernet
+# em uma sequencia hexadecimal separada por dois pontos (Padrão do Endereço MAC
+def eth_addr(a):
+    b = "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x" % (
+        ord(a[0]), ord(a[1]), ord(a[2]), ord(a[3]), ord(a[4]), ord(a[5]))
+    return b
 
-if host == "":
-	print("\n [!]ERROR: Missing input arguments.")
-	print(" [!]Target not set.")
-	print(" [!]Exiting application.\n")
-	sys.exit(1)
+# Criando um AF_PACKET do tipo raw_socket
+# Definindo ETH_P_ALL   0x0003  /*todos os pacotes.*/
+try:
+    s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0003))
+except socket.error as msg:
+    print('Socket could not be created. Error Code: ' +
+          str(msg[0]) + 'Message ' + msg[1])
+    sys.exit()
 
+# Recebendo os Pacotes
+while True:
+    packet = s.recvfrom(65565)
 
-# criando um raw socket e um bind para uma interface publica
-if os.name == "nt":
-    socket_protocol = socket.IPPROTO_IP
-else:
-    socket_protocol = socket.IPPROTO_ICMP
+    # String dos pacotes com tuplas
+    packet = packet[0]
 
-sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)
+    # Analisando o cabecalho Ethernet
+    eth_length = 14
 
-sniffer.bind((host, 0))
+    eth_header = packet[:eth_length]
+    eth = unpack('!6s6sH', eth_header)
+    eth_protocol = socket.ntohs(eth[2])
+    print('Destination MAC: ' + eth_addr(packet[0:6]) +
+          '\nSource MAC: ' + eth_addr(packet[6:12]) +
+          '\nProtocol: ' + str(eth_protocol))
 
-# queremos capturar o cabecalho do ip
-sniffer.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+    # Analisar os Pacotes IP com o protocolo = 8
+    if eth_protocol == 8:
+        # Analisar o cabecalho IP
+        # Capiturando os primeiros 20 caracteres do cabecalho IP
+        ip_header = packet[eth_length:20 + eth_length]
 
-# se estivermos no Windows, nos temos que enviar um IOCTL
-# para setar o modo promiscuo
-if os.name == "nt":
-    sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
+        # Agora desenpacota os dados
+        iph = unpack('!BBHHHBBH4s4s', ip_header)
 
-# lendo o pacote
-print sniffer.recvfrom(65565)
+        version_ihl = iph[0]
+        version = version_ihl >> 4
+        ihl = version_ihl & 0xF
 
-# se estivermos no Windows, temos que desligar o modo promiscuo
-if os.name == "nt":
-    sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)
+        iph_length = ihl * 4
+
+        ttl = iph[5]
+        protocol = iph[6]
+        s_addr = socket.inet_ntoa(iph[8])
+        d_addr = socket.inet_ntoa(iph[9])
+
+        print('Version: ' + str(version) +
+              ' IP Header Length: ' + str(ihl) +
+              ' TTL: ' + str(ttl) +
+              ' Protocol: ' + str(protocol) +
+              ' Source Address: ' + str(s_addr) +
+              ' Destination Adress: ' + str(d_addr))
+
+        # Protocolo TCP
+        if protocol == 6:
+            t = iph_length + eth_length
+            tcp_header = packet[t:t+20]
+
+            # Agora desenpacota os dados
+            tcph = unpack('!HHLLBBHHH', tcp_header)
+
+            source_port = tcph[0]
+            dest_port = tcph[1]
+            sequence = tcph[2]
+            acknowledgement = tcph[3]
+            doff_reserved = tcph[4]
+            tcph_length = doff_reserved >> 4
+
+            print('Source Port: ' + str(source_port) +
+                  ' Dest. Port: ' + str(dest_port) +
+                  ' Sequence Number: ' + str(sequence) +
+                  ' Acknowledgement: ' + str(acknowledgement) +
+                  ' TCP Header Length: ' + str(tcph_length))
+
+            h_size = eth_length + iph_length + tcph_length * 4
+            data_size = len(packet) - h_size
+
+            # Pegar os dados do pacote
+            data = packet[h_size:]
+
+            print('Data: ' + data)
+
+        # Pacotes ICMP
+        elif protocol == 1:
+            u = iph_length + eth_length
+            icmp_length = 4
+            icmp_header = packet[u:u+4]
+
+            # Agora desenpacota os dados
+            icmph = unpack('!BBH', icmp_header)
+            icmp_type = icmph[0]
+            code = icmph[1]
+            checksum = icmph[2]
+
+            print('Type: ' + str(icmp_type) +
+                  ' Code: ' + str(code) +
+                  ' Checksum: ' + str(checksum))
+
+            h_size = eth_length + iph_length + icmp_length
+            data_size = len(packet) - h_size
+
+            # Pegar os dados do pacote
+            data = packet[h_size:]
+
+            print('Data: ' + data)
+
+        # Protocolo UDP
+        elif protocol == 17:
+            u = iph_length + eth_length
+            udph_length = 8
+            udp_header = packet[u:u+8]
+
+            # Agora desenpacota os dados
+            udph = unpack('!HHHH', udp_header)
+
+            source_port = udph[0]
+            dest_port = udph[1]
+            length = udph[2]
+            checksum = udph[3]
+
+            print('Source Port: ' + str(source_port) +
+                  ' Dest. Port: ' + str(dest_port) +
+                  ' Length: ' + str(length) +
+                  ' Checksum: ' + str(checksum))
+
+            h_size = eth_length + iph_length + udph_length
+            data_size = len(packet) - h_size
+
+            # Pegando os dados do pacote
+            data = packet[h_size:]
+
+            print('Data: ' + data)
+
+    # Algum outro pacote IP com IGMP
+    else:
+        print('Protocol other than TCP/UDP/ICMP')
+    print
