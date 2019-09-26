@@ -79,4 +79,4 @@ Data:
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/werdelesmarcio/BullSniffer?style=for-the-badge">   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/werdelesmarcio/BullSniffer?style=for-the-badge">
 
 
-<img src = "https://github.com/werdelesmarcio/Imagens/blob/master/Selos/OpenSource.png?raw=true" width=50 align="left"><img src = "https://github.com/werdelesmarcio/Imagens/blob/master/Selos/PoweredByLinux.png?raw=true" width =50 align="center"><img src = "https://github.com/werdelesmarcio/Imagens/blob/master/Selos/SoftwareLivre.png?raw=true" width=50 align="right">
+<img src = "https://github.com/werdelesmarcio/Imagens/blob/master/Selos/PoweredByLinux.png?raw=true" width =50 align="center">
