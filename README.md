@@ -4,21 +4,39 @@
 
 Repositório para a aplicação BullSniffer.
 
-BullSniffer é uma ferramenta em fase de desnenvolvimento, voltada para estudo de redes e
-é direcionada para sistemas GNU/Linux. Faz uma escuta em Promiscuous Mode e captura info
-da rede onde é executado.
+## O que é um sniffer?
+Um sniffer não é necessariamente malicioso. Na verdade, este tipo de software é usado com 
+frequência para monitorar e analisar o tráfego de rede para detectar problemas e manter um 
+fluxo eficiente. 
+
+No entanto, um sniffer também pode ser usado com má fé. Eles capturam tudo o que passa por
+eles, inclusive senhas e nomes de usuários não criptografados. Dessa forma, os hackers com
+acesso a um sniffer terão acesso também a qualquer conta que passar por ele. Além disso, um 
+sniffer pode ser instalado em qualquer computador conectado a uma rede local. 
+
+Ele não precisa ser instalado no próprio aparelho que se deseja monitorar. Em outras palavras,
+ele pode permanecer oculto durante a conexão.
+
+## O BullSniffer
+BullSniffer é uma ferramenta do tipo Sniffer que está em fase de desnenvolvimento e é voltada
+para análises de fluxo de redes. É direcionada para sistemas GNU/Linux. Ela faz uma escuta em 
+Modo Promíscuo _(Promiscuous Mode)_ e captura informações que estejam trafegando pela rede.
 
 ---
 
-OBS.: Para usar como executável, lembrar de dar permissão de execução
+_OBS.: Para usar como executável, lembrar de dar permissão de execução_
 **sudo chmod +x bullsniffer.py**
-Só lembrando de que para executar a aplicação você deve ser **root**
+
+---
 
 ## Execução 
-Para executar a aplicação deve passar o argumento com o host do alvo que terá
-o fluxo de dados que entra e que sai dele enviados para o atacante.
+Para executar a aplicação, apenas deve-se digitar o nome ou o caminho, se não tiver sido enviada
+para o PATH, quando estiver conectado a rede que se quer Sniffar. Só lembrando de que para executar
+a aplicação você deve ser **root**
 
 **sudo ./bullsniffer**
+
+_Exemplo de Resposta:_
 
 ```  ___________                               
     / ========= \                              
@@ -48,8 +66,8 @@ TCP Header Length: 8
 Data: 53�*�����e�ÚZ)����<i�x�T���鳇`�c�X�	�ײ���K���Ky/�=�H�����dޢ�ʔo�F6����������mLeZ��P�$��B��Wε�^[L���o�h��:9
                                                                                                                      Jt�֨��=┦:��f�'��o ,���:<�\(j��Yǭ�j?��ѳk`_�>��)�E�z�*� |ʽM�V"U\� Hy7���o����������i7����B8�����PW��"�euX`@���
 ���HB�$(�rE�h��т3ضwiq�.AI&��n�.aR׮��/�ս��fTݒ<�
-                                   ��6��ێ�e+d�@|Z�/u�#{wL�����ZUG�Di�r/QS~]=�/�lk�;��	�Y��&4ҳ��j�4Xt	6�4�Ck��{��(_��=1IUp�_x�R�;@+8�z"�Zg�%��#f9�m�
-I
+      ��6��ێ�e+d�@|Z�/u�#{wL�����ZUG�Di�r
+  /QS~]=�/�lk�;��	�Y��&4ҳ��j�4Xt	6�4�Ck��{��(_��=1IUp�_x�R�;@+8�z"�Zg�%��#f9�m�I
 
 ------------------------------
 ------------------------------
@@ -69,7 +87,7 @@ Data:
 
 ------------------------------
 
-...
+<omitido>
 
 ```
 
