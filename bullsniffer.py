@@ -8,13 +8,19 @@ import os
 from struct import *
 import subprocess
 from datetime import datetime
+from  time import sleep
 
 from banner import *
 
 # Limpa a tela ao executar a aplicacao
 subprocess.call('clear', shell=True)
 
-banner()
+banner() 
+
+for contagem in range(0,10):
+    sleep(1)
+
+print ("Initialize...")
 
 # Convertendo uma string de 6 caracteres de endereco ethernet
 # em uma sequencia hexadecimal separada por traco
