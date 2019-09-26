@@ -29,7 +29,7 @@ o fluxo de dados que entra e que sai dele enviados para o atacante.
   | |___________| |________________________________  
   |_=_____________|          BULLSNIFFER           ) 
   / ::::::::::::: \          VERSION 1.0          /  
- / ::::::::::::::: \          BY: GHOST       =D-'   
+ / ::::::::::::::: \      BY: Werdeles Soares =D-'   
 (___________________)    Vault Cyber Security                        
 
 ------------------------------
