@@ -11,10 +11,10 @@ def banner():
   	print("    | _____________ |                                 ")
   	print("    | | -         | |                                 ")
   	print("    | |           | |                                 ")
-  	print("    | |___________| |________________________________ ") 
-  	print("    |_=_____________|          BULLSNIFFER           )") 
-  	print("    / ::::::::::::: \          VERSION 1.0          / ") 
- 	print("   / ::::::::::::::: \          BY: GHOST       =D-'  ") 
+  	print("    | |___________| |_________________________________ ") 
+  	print("    |_=_____________|          BULLSNIFFER            )") 
+  	print("    / ::::::::::::: \          VERSION 1.0           / ") 
+ 	print("   / ::::::::::::::: \      BY: Werdeles Soares   =D-'  ") 
 	print("  (___________________)    Vault Cyber Security       ")
 	print
 
