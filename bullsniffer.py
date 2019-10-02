@@ -10,6 +10,10 @@ import subprocess
 from datetime import datetime
 from  time import sleep
 
+pathfile = './utils/'
+if pathfile not in sys.path:
+    sys.path.append(pathfile)
+
 from banner import *
 
 # Limpa a tela ao executar a aplicacao
