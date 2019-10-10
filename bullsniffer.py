@@ -80,9 +80,7 @@ while True:
         s_addr = socket.inet_ntoa(iph[8])
         d_addr = socket.inet_ntoa(iph[9])
 
-        print('Version: ' + str(version) +
-              '\nIP Header Length: ' + str(ihl) + ' TTL: ' + str(ttl) +
-              '\nProtocol: ' + str(protocol) +
+        print('Version: ' + str(version) + '\nIP Header Length: ' + str(ihl) + ' TTL: ' + str(ttl) + '\nProtocol: ' + str(protocol) +
               '\nSource Address: ' + str(s_addr) +
               '\nDestination Adress: ' + str(d_addr))
 
