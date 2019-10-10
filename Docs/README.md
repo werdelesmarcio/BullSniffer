@@ -2,41 +2,29 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/52c8f10ce940f001945d/maintainability)](https://codeclimate.com/github/werdelesmarcio/BullSniffer/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/52c8f10ce940f001945d/test_coverage)](https://codeclimate.com/github/werdelesmarcio/BullSniffer/test_coverage)  <img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/werdelesmarcio/BullSniffer">  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=werdelesmarcio_BullSniffer&metric=alert_status)](https://sonarcloud.io/dashboard?id=werdelesmarcio_BullSniffer)  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/werdelesmarcio/BullSniffer">  <img alt="GitHub" src="https://img.shields.io/github/license/werdelesmarcio/BullSniffer">  <img alt="Twitter URL" src="https://img.shields.io/twitter/url/https/twitter.com/ScorpionInc?style=social">
 
-Repositório para a aplicação BullSniffer.
+Repository for the BullSniffer application.
 
-## O que é um sniffer?
-Um sniffer não é necessariamente malicioso. Na verdade, este tipo de software é usado com 
-frequência para monitorar e analisar o tráfego de rede para detectar problemas e manter um 
-fluxo eficiente. 
+## What is a sniffer?
+A sniffer is not necessarily a malicious application. In fact, this software is often used to monitor and analyze network traffic to detect potential problems and maintain more efficient data flow.
 
-No entanto, um sniffer também pode ser usado com má fé. Eles capturam tudo o que passa por
-eles, inclusive senhas e nomes de usuários não criptografados. Dessa forma, os hackers com
-acesso a um sniffer terão acesso também a qualquer conta que passar por ele. Além disso, um 
-sniffer pode ser instalado em qualquer computador conectado a uma rede local. 
+However, a sniffer can also be used for dubious purposes as it captures everything that passes through the analyzed network, including passwords and unencrypted usernames (plain text).
 
-Ele não precisa ser instalado no próprio aparelho que se deseja monitorar. Em outras palavras,
-ele pode permanecer oculto durante a conexão.
+This way hackers who use a sniffer and have access to a network will have access to any information that travels through it. Also, some sniffers do not need to be installed on a computer connected to a local area network and can even be run via flash drives.
 
-## O BullSniffer
-BullSniffer é uma ferramenta do tipo Sniffer que está em fase de desnenvolvimento e é voltada
-para análises de fluxo de redes. É direcionada para sistemas GNU/Linux. Ela faz uma escuta em 
-Modo Promíscuo _(Promiscuous Mode)_ e captura informações que estejam trafegando pela rede.
+## BullSniffer
+BullSniffer is a sniffer-type tool under development that focuses on network flow analysis. It is developed for GNU/Linux systems. It listens in _promiscuous mode_ and captures information that is traveling across the target network.
 
----
-
-_OBS.: Para usar como executável, lembrar de dar permissão de execução_
+_Note: To use as executable, remember to give execute permission._
 **sudo chmod +x bullsniffer.py**
 
 ---
 
-## Execução 
-Para executar a aplicação, apenas deve-se digitar o nome ou o caminho, se não tiver sido enviada
-para o PATH, quando estiver conectado a rede que se quer Sniffar. Só lembrando de que para executar
-a aplicação você deve ser **root**
+## Execution
+To run the application, you only need to enter the name _(or path if it has not been sent to the PATH)_ when connected to the network you want to sniff. Just remembering that to run the app you must be **root**
 
 **sudo ./bullsniffer**
 
-_Exemplo de Resposta:_
+_Exemple:_
 
 ```  ___________                               
     / ========= \                              
@@ -87,11 +75,11 @@ Data:
 
 ------------------------------
 
-<omitido>
+<omitted>
 
 ```
 
-***O código-fonte está sob Licença GLP e é livre para aceita contribuição.***
+***The source code is under GPL License and is free to accept contributions..***
 
 
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/werdelesmarcio/BullSniffer?style=for-the-badge">   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/werdelesmarcio/BullSniffer?style=for-the-badge">
