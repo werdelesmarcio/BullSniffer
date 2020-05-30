@@ -8,7 +8,7 @@ import os
 from struct import *
 import subprocess
 from datetime import datetime
-from  time import sleep
+from time import sleep
 
 pathfile = './utils/'
 if pathfile not in sys.path:
@@ -16,22 +16,26 @@ if pathfile not in sys.path:
 
 from banner import *
 
+
 # Limpa a tela ao executar a aplicacao
 subprocess.call('clear', shell=True)
 
-banner() 
+banner()
 
-for contagem in range(0,10):
+for contagem in range(0, 10):
     sleep(1)
 
-print ("Initialize...")
+print("Initialize...")
 
 # Convertendo uma string de 6 caracteres de endereco ethernet
 # em uma sequencia hexadecimal separada por traco
+
+
 def eth_addr(a):
     b = "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x" % (
         ord(a[0]), ord(a[1]), ord(a[2]), ord(a[3]), ord(a[4]), ord(a[5]))
     return b
+
 
 # Criando um AF_PACKET do tipo raw_socket
 # define ETH_P_ALL   0x0003  /*todos os pacotes*/
@@ -55,7 +59,7 @@ while True:
     eth_header = packet[:eth_length]
     eth = unpack('!6s6sH', eth_header)
     eth_protocol = socket.ntohs(eth[2])
-    print ('-' * 30)
+    print('-' * 30)
     print('Destination MAC: ' + eth_addr(packet[0:6]) +
           '\nSource MAC: ' + eth_addr(packet[6:12]) +
           '\nProtocol: ' + str(eth_protocol))
@@ -124,7 +128,8 @@ while True:
             code = icmph[1]
             checksum = icmph[2]
 
-            print('Type: ' + str(icmp_type) + ' Code: ' + str(code) + ' Checksum: ' + str(checksum))
+            print('Type: ' + str(icmp_type) + ' Code: ' +
+                  str(code) + ' Checksum: ' + str(checksum))
 
             h_size = eth_length + iph_length + icmp_length
             data_size = len(packet) - h_size
@@ -158,7 +163,6 @@ while True:
             data = packet[h_size:]
 
             print('Data: ' + data)
-            
 
     # Algum outro pacote IP com IGMP
     else:
